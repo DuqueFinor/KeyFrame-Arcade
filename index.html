@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>KeyFrame Survival</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="menu" class="screen">
+      <div class="brand">🎮 KEYFRAME ARCADE</div>
+      <h1>🧟 SOBREVIVÊNCIA</h1>
+      <p>Explore a floresta, enfrente ondas de inimigos, evolua e volte à base para melhorar seu equipamento.</p>
+      <div class="mode-grid">
+        <button id="soloBtn" class="mode-card primary"><strong>👤 SOLO</strong><span>Jogue sozinho e tente chegar o mais longe possível.</span></button>
+        <button id="multiBtn" class="mode-card"><strong>👥 MULTIPLAYER</strong><span>Entre com seus amigos na mesma Activity.</span><small>Primeira versão: lobby preparado</small></button>
+      </div>
+      <div id="discordStatus" class="status">Preparando jogo...</div>
+    </section>
+
+    <section id="game" class="game-wrap hidden">
+      <header class="hud">
+        <div class="stat"><b>ONDA</b><span id="wave">1</span></div>
+        <div class="stat"><b>ABATES</b><span id="kills">0</span></div>
+        <div class="stat"><b>NÍVEL</b><span id="level">1</span></div>
+        <div class="stat wave-stat"><b>ONDA</b><span id="waveProgress">0/10</span></div>
+        <div class="health stat-wide"><b>❤️ VIDA <span id="healthText">100/100</span></b><div class="health-shell"><i id="healthBar"></i></div></div>
+        <div class="xp stat-wide"><b>⭐ XP <span id="xpText">0/8 XP</span></b><div class="xp-shell"><i id="xpBar"></i></div></div>
+        <div class="combat-stats"><span>⚔️ <b id="damageStat">24</b></span><span>⚡ <b id="rateStat">2.4/s</b></span></div>
+      </header>
+
+      <div id="readyTop" class="ready-top hidden">
+        <div class="ready-copy"><strong>🌲 ONDA <span id="readyTopWave">2</span> PRONTA</strong><small>Sem inimigos por enquanto. Você pode explorar a floresta e visitar a base.</small></div>
+        <button id="readyBtn" class="ready-top-btn">PRONTO</button>
+      </div>
+
+      <div id="upgradeNotice" class="upgrade-notice hidden">⭐ <b><span id="upgradeCount">1</span> upgrade disponível</b> — vá até a base e pressione <b>E</b>.</div>
+      <div id="baseHint" class="base-hint hidden">🏕️ <b>BASE</b> • <span id="baseUpgradeCount">1</span> melhoria disponível • pressione <b>E</b></div>
+
+      <canvas id="canvas" aria-label="Área do jogo de sobrevivência"></canvas>
+      <div class="controls">WASD / setas para mover • tiro automático • mouse mira • E na base para melhorar</div>
+    </section>
+
+    <section id="waveBreak" class="wave-break-accessibility hidden" aria-hidden="true"></section>
+
+    <section id="upgrade" class="overlay hidden">
+      <div class="panel base-panel">
+        <div class="eyebrow">🏕️ BASE • OFICINA</div>
+        <h2>Escolha uma melhoria</h2>
+        <p class="panel-sub">Você ganhou uma melhoria. Escolha uma opção para instalar no equipamento.</p>
+        <div id="upgradeList" class="upgrade-list"></div>
+        <small class="ready-hint">Depois de escolher, você volta para a floresta. Seus upgrades ficam permanentes nesta partida.</small>
+      </div>
+    </section>
+
+    <section id="gameOver" class="overlay hidden">
+      <div class="panel center">
+        <div class="eyebrow">FIM DE JOGO</div>
+        <h2>Você sobreviveu até a onda <span id="finalWave">1</span></h2>
+        <p>Abates: <b id="finalKills">0</b> • Nível: <b id="finalLevel">1</b></p>
+        <button id="restartBtn" class="big-btn">Jogar novamente</button>
+        <button id="menuBtn" class="text-btn">Voltar ao menu</button>
+      </div>
+    </section>
+
+    <section id="multiLobby" class="overlay hidden">
+      <div class="panel center">
+        <div class="eyebrow">MULTIPLAYER</div>
+        <h2>Lobby preparado</h2>
+        <p>Esta primeira versão já reserva o modo multiplayer. O próximo passo será sincronizar jogadores, inimigos e dano em tempo real.</p>
+        <div id="participants" class="participants">Verificando participantes...</div>
+        <button id="multiBackBtn" class="big-btn">Voltar</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
