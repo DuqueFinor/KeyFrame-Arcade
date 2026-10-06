@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>KeyFrame Survival</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="menu" class="screen">
+      <div class="brand">🎮 KEYFRAME ARCADE</div>
+      <h1>🧟 SOBREVIVÊNCIA</h1>
+      <p>Sobreviva às ondas, elimine inimigos e tente bater seu recorde.</p>
+      <div class="mode-grid">
+        <button id="soloBtn" class="mode-card primary"><strong>👤 SOLO</strong><span>Jogue sozinho e tente chegar o mais longe possível.</span></button>
+        <button id="multiBtn" class="mode-card"><strong>👥 MULTIPLAYER</strong><span>Entre com seus amigos na mesma Activity.</span><small>Primeira versão: lobby preparado</small></button>
+      </div>
+      <div id="discordStatus" class="status">Preparando jogo...</div>
+    </section>
+
+    <section id="game" class="game-wrap hidden">
+      <header class="hud">
+        <div><b>ONDA</b><span id="wave">1</span></div>
+        <div><b>ABATES</b><span id="kills">0</span></div>
+        <div><b>NÍVEL</b><span id="level">1</span></div>
+        <div><b>ONDA</b><span id="waveProgress">0/10</span></div>
+        <div class="health"><b>VIDA</b><div class="bar"><i id="healthBar"></i></div></div>
+        <div class="xp"><b>XP</b><span id="xpText">0/8 XP</span><div class="bar"><i id="xpBar"></i></div></div>
+      </header>
+      <canvas id="canvas" aria-label="Área do jogo de sobrevivência"></canvas>
+      <div class="controls">WASD / setas para mover • mouse para mirar • clique ou Espaço para atirar • sobreviva às ondas</div>
+    </section>
+
+    <section id="waveBreak" class="overlay hidden">
+      <div class="panel center wave-panel">
+        <div class="eyebrow">ONDA CONCLUÍDA</div>
+        <h2>🌲 A floresta ficou em silêncio</h2>
+        <p>Você terminou a onda <b id="breakWaveNumber">1</b> com <b id="breakKills">0</b> abates.</p>
+        <div class="next-wave">Próxima: <strong>Onda <span id="nextWaveNumber">2</span></strong></div>
+        <button id="readyBtn" class="big-btn ready-btn">PRONTO</button>
+        <small class="ready-hint">A próxima onda só começa quando você clicar.</small>
+      </div>
+    </section>
+
+    <section id="upgrade" class="overlay hidden">
+      <div class="panel">
+        <div class="eyebrow">SUBIU DE NÍVEL</div>
+        <h2>Escolha um upgrade</h2>
+        <div id="upgradeList" class="upgrade-list"></div>
+      </div>
+    </section>
+
+    <section id="gameOver" class="overlay hidden">
+      <div class="panel center">
+        <div class="eyebrow">FIM DE JOGO</div>
+        <h2>Você sobreviveu até a onda <span id="finalWave">1</span></h2>
+        <p>Abates: <b id="finalKills">0</b> • Nível: <b id="finalLevel">1</b></p>
+        <button id="restartBtn" class="big-btn">Jogar novamente</button>
+        <button id="menuBtn" class="text-btn">Voltar ao menu</button>
+      </div>
+    </section>
+
+    <section id="multiLobby" class="overlay hidden">
+      <div class="panel center">
+        <div class="eyebrow">MULTIPLAYER</div>
+        <h2>Lobby preparado</h2>
+        <p>Esta primeira versão já reserva o modo multiplayer. O próximo passo será sincronizar jogadores, inimigos e dano em tempo real.</p>
+        <div id="participants" class="participants">Verificando participantes...</div>
+        <button id="multiBackBtn" class="big-btn">Voltar</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
